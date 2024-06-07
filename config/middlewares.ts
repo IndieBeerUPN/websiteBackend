@@ -24,7 +24,7 @@ export default [
   {
     name:'strapi::cors',
     config: {
-      origin: ['*', 'adminibeer.indiebeerupn.com'],
+      origin: ['https://adminibeer-ce6b349d5c5c.herokuapp.com/'],
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
       headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
       keepHeaderOnError: true,
