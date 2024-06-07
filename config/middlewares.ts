@@ -21,7 +21,13 @@ export default [
       },
     },
   },
-  'strapi::cors',
+  {
+    settings: {
+      cors: {
+        origin: ['*'],
+      },
+    },
+  },
   'strapi::poweredBy',
   'strapi::query',
   'strapi::body',
