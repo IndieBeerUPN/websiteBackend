@@ -368,6 +368,7 @@ export interface ApiCervezaCerveza extends Schema.CollectionType {
     singularName: 'cerveza';
     pluralName: 'cervezas';
     displayName: 'Cervezas';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -377,6 +378,8 @@ export interface ApiCervezaCerveza extends Schema.CollectionType {
     Estilo: Attribute.String;
     Precio: Attribute.Integer;
     Descripcion: Attribute.Text;
+    Nombre: Attribute.String;
+    Slug: Attribute.UID<'api::cerveza.cerveza', 'Nombre'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
