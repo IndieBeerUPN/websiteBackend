@@ -362,42 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiCervezaCerveza extends Schema.CollectionType {
-  collectionName: 'cervezas';
-  info: {
-    singularName: 'cerveza';
-    pluralName: 'cervezas';
-    displayName: 'Cervezas';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Cerveza: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    Estilo: Attribute.String;
-    Precio: Attribute.Integer;
-    Descripcion: Attribute.Text;
-    Nombre: Attribute.String;
-    Slug: Attribute.UID<'api::cerveza.cerveza', 'Nombre'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::cerveza.cerveza',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::cerveza.cerveza',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -824,6 +788,69 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiCervezaCerveza extends Schema.CollectionType {
+  collectionName: 'cervezas';
+  info: {
+    singularName: 'cerveza';
+    pluralName: 'cervezas';
+    displayName: 'Cervezas';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Cerveza: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Estilo: Attribute.String;
+    Precio: Attribute.Integer;
+    Descripcion: Attribute.Text;
+    Nombre: Attribute.String;
+    Slug: Attribute.UID<'api::cerveza.cerveza', 'Nombre'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::cerveza.cerveza',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::cerveza.cerveza',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMenuMenu extends Schema.CollectionType {
+  collectionName: 'menus';
+  info: {
+    singularName: 'menu';
+    pluralName: 'menus';
+    displayName: 'Menu';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Platillo: Attribute.String;
+    Descripcion: Attribute.Text;
+    Precio: Attribute.Integer;
+    Categoria: Attribute.Enumeration<['Favorito', 'Snacks', 'Plancha']>;
+    Foto: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::menu.menu', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::menu.menu', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -834,7 +861,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::cerveza.cerveza': ApiCervezaCerveza;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -843,6 +869,8 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::cerveza.cerveza': ApiCervezaCerveza;
+      'api::menu.menu': ApiMenuMenu;
     }
   }
 }
